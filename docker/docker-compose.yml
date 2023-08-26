@@ -2,29 +2,16 @@ version: '3'
 services:
   #mongodb://root:yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u@0.0.0.0:27017/AGxo1pcAlZvhzR0hRF26yd2i3
   mongo:
-    container_name: cocktails-mongo-db
-    # image: mongo:7.0-rc-jammy
-    image: aashreys/mongo-auth:latest
-    environment:
-      - AUTH=yes
-      - MONGODB_ADMIN_USER=admin
-      - MONGODB_ADMIN_PASS=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
-      - MONGODB_APPLICATION_DATABASE=AGxo1pcAlZvhzR0hRF26yd2i3
-      - MONGODB_APPLICATION_USER=cocktails
-      - MONGODB_APPLICATION_PASS=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
-    volumes:
-      - "/mongo/cocktails/data:/data/db"
-    ports:
-      - "27017:27017"
-
-  mongoSession:
-    container_name: cocktails-mongoSession-db
+    container_name: drinks-mongo-db
     image: mongo:7.0-rc-jammy
     environment:
-      - name=value
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
+      - MONGO_INITDB_DATABASE=AGxo1pcAlZvhzR0hRF26yd2i3
+      - MONGO_INITDB_USER=drinks
+      - MONGO_INITDB_PWD=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
+    volumes:
+      - "/mongo/drinks/data:/data/db"
+      - "./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro"
     ports:
-      - "27018:27017"
-
-
-#mongosh -u root -p yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u 	--authenticationDatabase AGxo1pcAlZvhzR0hRF26yd2i3 --authenticationDatabase admin
-
+      - "27017:27017"
