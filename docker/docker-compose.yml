@@ -1,0 +1,30 @@
+version: '3'
+services:
+  #mongodb://root:yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u@0.0.0.0:27017/AGxo1pcAlZvhzR0hRF26yd2i3
+  mongo:
+    container_name: cocktails-mongo-db
+    # image: mongo:7.0-rc-jammy
+    image: aashreys/mongo-auth:latest
+    environment:
+      - AUTH=yes
+      - MONGODB_ADMIN_USER=admin
+      - MONGODB_ADMIN_PASS=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
+      - MONGODB_APPLICATION_DATABASE=AGxo1pcAlZvhzR0hRF26yd2i3
+      - MONGODB_APPLICATION_USER=cocktails
+      - MONGODB_APPLICATION_PASS=yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u
+    volumes:
+      - "/mongo/cocktails/data:/data/db"
+    ports:
+      - "27017:27017"
+
+  mongoSession:
+    container_name: cocktails-mongoSession-db
+    image: mongo:7.0-rc-jammy
+    environment:
+      - name=value
+    ports:
+      - "27018:27017"
+
+
+#mongosh -u root -p yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u 	--authenticationDatabase AGxo1pcAlZvhzR0hRF26yd2i3 --authenticationDatabase admin
+
