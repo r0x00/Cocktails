@@ -45,6 +45,7 @@ exports.create = async function(req, res, next) {
     data.drinkware = values.data.drinkware;
     data.ingredients = values.data.ingredients;
     data.preparation = values.data.preparation;
+    data.notes = values.data.notes;
 
     attr.data = data;
 
