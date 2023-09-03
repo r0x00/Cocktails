@@ -1,4 +1,4 @@
-exports.modules = {
+module.exports = {
   schema: true,
   attributes: {
     username: {
@@ -6,18 +6,27 @@ exports.modules = {
       required: true
     },
     email: {
-      type: 'email',
+      type: 'string',
+      isEmail: true,
       required: true,
       unique: true
     },
+    passports: {
+      collection: 'Passport',
+      via: 'user'
+    },
     permission: {
       type: 'string',
-      enum: ['common', 'admin'],
+      isIn: ['common', 'admin'],
       defaultsTo: 'common'
     },
     color: {
       type: 'string',
       defaultsTo: '#E44F44'
+    },
+    enabled: {
+      type:'boolean',
+      defaultsTo: true
     },
     erased: {
       type: 'boolean',

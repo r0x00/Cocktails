@@ -1,4 +1,10 @@
 module.exports.routesrestful = {
+  // Auth
+  'post /api/auth/login/rest': {
+    controller: 'AuthController',
+    action: 'restLogin'
+  },
+  // End Auth
   // Drinks
   'get /api/drinks/': {
     controller: 'DrinksController',

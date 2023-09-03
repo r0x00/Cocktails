@@ -28,7 +28,7 @@ module.exports = {
     },
     enabled: {
       type:'boolean',
-      defaultsTo: false
+      defaultsTo: true
     },
     erased: {
       type: 'boolean',

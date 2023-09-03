@@ -1,6 +1,5 @@
 const _ = require('lodash');
 const passport = require('passport');
-const generator = require('generate-password');
 
 exports.load = async function(req, res, next) {
   try {
@@ -38,16 +37,10 @@ exports.create = async function(req, res, next) {
     if(Object.values(values).length <= 0 || !values) return res.badRequest({err: 'Please add some data'});
     if(!values.username) return res.badRequest({err: 'Please add the username'});
     if(!values.email) return res.badRequest({err: 'Please add the email'});
+    if(!values.password) return res.badRequest({err: 'Please add the password'});
+    if(!values.action) return res.badRequest({err: 'Please add the password'});
 
-    const attr = values;
-
-    delete attr._csrf;
-
-    attr.password = generator.generate({
-      length: 10,
-      numbers: true,
-      symbols: true
-    });
+    passport.callback(req, res, async (err, user) => res.send(user));
 
   } catch(e) {
     res.serverError(e);

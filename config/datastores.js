@@ -31,18 +31,18 @@ module.exports.datastores = {
   * (For production configuration, see `config/env/production.js`.)          *
   *                                                                          *
   ***************************************************************************/
-  mongodb: {
-    adapter   : 'sails-mongo',
-    host      : 'localhost',
-    port      : 27017,
-    user      : 'drinks',
-    password  : 'yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u',
-    database  : 'AGxo1pcAlZvhzR0hRF26yd2i3'
-  },
+  // mongo: {
+  //   adapter   : 'sails-mongo',
+  //   host      : 'localhost',
+  //   port      : 27017,
+  //   user      : 'drinks',
+  //   password  : 'yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u',
+  //   database  : 'AGxo1pcAlZvhzR0hRF26yd2i3'
+  // },
 
   default: {
-    // adapter: 'sails-mongo',
-    // url: 'mongodb://root:yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u@localhost:27017/AGxo1pcAlZvhzR0hRF26yd2i3'
+    adapter: 'sails-mongo',
+    url: 'mongodb://drinks:yINIitqSQ6WFRf2HIZZEnJXNDSY3cG0Fg04mFtGJAjpi9E1q9u@localhost:27017/AGxo1pcAlZvhzR0hRF26yd2i3'
 
     /***************************************************************************
     *                                                                          *
