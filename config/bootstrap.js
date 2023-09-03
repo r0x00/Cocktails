@@ -8,25 +8,16 @@
  * For more information on seeding your app with fake data, check out:
  * https://sailsjs.com/config/bootstrap
  */
-// const crypto = require('crypto');
+
+const defaultData = require('../api/services/default');
+
 module.exports.bootstrap = async function() {
-
-  // const resultUser = await User.findOne({ email: "admin@drinks.com" });
-
-  //   const token = crypto.randomBytes(48).toString('base64');
-
-  //   const passportData = {};
-  //   passportData.user = resultUser.id;
-  //   passportData.protocol = 'local';
-  //   passportData.accessToken = token;
-  //   passportData.password = "BJzgnn45Z0aQY";
-
-    // const resultPassport = await Passport.create(passportData);
-
   // Import dependencies
   var path = require('path');
 
   sails.services.passport.loadStrategy();
+
+  defaultData.Users.create();
 
   // This bootstrap version indicates what version of fake data we're dealing with here.
   var HARD_CODED_DATA_VERSION = 0;
